@@ -17,7 +17,7 @@ var init = function () {
                     case 0:
                         _context.prev = 0;
                         _context.next = 3;
-                        return readAsync('./package.json');
+                        return readAsync('../package.json');
 
                     case 3:
                         data = _context.sent;

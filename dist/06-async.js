@@ -16,7 +16,7 @@ var init = function () {
                 switch (_context2.prev = _context2.next) {
                     case 0:
                         _context2.next = 2;
-                        return readAsync('./package-lock.json');
+                        return readAsync('../package-lock.json');
 
                     case 2:
                         data = _context2.sent;
@@ -44,7 +44,7 @@ var fs = require('fs');
 
 // 第一阶段 回调函数
 function readFile(cb) {
-    fs.readFile('./package.json', function (err, data) {
+    fs.readFile('../package.json', function (err, data) {
         if (err) return cb(err);
         cb(null, data);
     });
@@ -60,7 +60,7 @@ readFile(function (err, data) {
 
 function readFileAsync() {
     return new Promise(function (resolve, reject) {
-        fs.readFile('./package.json', function (err, data) {
+        fs.readFile('../package.json', function (err, data) {
             if (err) reject(err);else resolve(data);
         });
     });
@@ -84,7 +84,7 @@ co( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
             switch (_context.prev = _context.next) {
                 case 0:
                     _context.next = 2;
-                    return util.promisify(fs.readFile)('./package.json');
+                    return util.promisify(fs.readFile)('../package.json');
 
                 case 2:
                     data = _context.sent;

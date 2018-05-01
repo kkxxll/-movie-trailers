@@ -2,7 +2,7 @@ const fs = require('fs')
 
 // 第一阶段 回调函数
 function readFile (cb) {
-    fs.readFile('./package.json', (err, data) => {
+    fs.readFile('../package.json', (err, data) => {
         if (err) return cb(err)
         cb(null, data)
     })
@@ -19,7 +19,7 @@ readFile((err, data) => {
 
 function readFileAsync () {
     return new Promise((resolve, reject) => {
-        fs.readFile('./package.json',(err, data) => {
+        fs.readFile('../package.json',(err, data) => {
             if(err) reject(err)
             else resolve(data)
         })
@@ -38,7 +38,7 @@ const co = require('co')
 const util = require('util')
 
 co(function *() {
-    let data = yield util.promisify(fs.readFile)('./package.json')
+    let data = yield util.promisify(fs.readFile)('../package.json')
 
     data = JSON.parse(data)
 
@@ -49,7 +49,7 @@ co(function *() {
 const readAsync = util.promisify(fs.readFile)
 
 async function init() {
-    let data = await readAsync('./package-lock.json')
+    let data = await readAsync('../package-lock.json')
     data = JSON.parse(data)
 
     console.log('async:', data.name)

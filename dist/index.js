@@ -17,7 +17,7 @@ var init = function () {
                     case 0:
                         _context.prev = 0;
                         _context.next = 3;
-                        return (0, _util.promisify)(_fs.readFile)((0, _path.resolve)(__dirname, './package.json'));
+                        return (0, _util.promisify)(_fs.readFile)((0, _path.resolve)(__dirname, '../package.json'));
 
                     case 3:
                         data = _context.sent;
@@ -60,7 +60,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _util.promisify)(_fs.readFile)((0, _path.resolve)(__dirname, './package.json')).then(function (data) {
+(0, _util.promisify)(_fs.readFile)((0, _path.resolve)(__dirname, '../package.json')).then(function (data) {
     data = JSON.parse(data);
     console.log(data.name);
 
