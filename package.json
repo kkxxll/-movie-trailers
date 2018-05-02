@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/kkxxll/movie-trailers#readme",
   "dependencies": {
-    "koa": "^2.4.1"
+    "koa": "^2.0.0-alpha.8",
+    "koa-router": "^8.0.0-alpha.1",
+    "koa-views": "^5.2.1",
+    "pug": "^2.0.3"
   }
 }

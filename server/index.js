@@ -1,7 +1,17 @@
-const Koa = require('koa')
-const app = new Koa()
-app.use(async (ctx, next) => {
-    ctx.body = '首页'
-})
+const Koa = require('koa');
+const app = new Koa();
+const views = require('koa-views');
+const { resolve } = require('path');
 
-app.listen(2333)
+app.use(views(resolve(__dirname, './views'), {
+  extension: 'pug'
+}));
+
+app.use(async function(ctx, next) {
+  await ctx.render('index.pug', {
+    you: 'John',
+    me: 'kk'
+  });
+});
+
+app.listen(2333);
