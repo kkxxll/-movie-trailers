@@ -1,28 +1,23 @@
 {
-  "name": "kk",
+  "name": "movie-trailers",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
-    "dev": "nodemon -w src --exec \"babel-node src --presets env\"",
-    "build": "rimraf dist && babel src -s -D -d dist --presets env --ignore ./node_modules",
+    "start": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "co": "^4.6.0",
-    "node-fetch": "^2.1.2",
-    "nodemon": "^1.17.3",
-    "rimraf": "^2.6.2"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kkxxll/movie-trailers.git"
   },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kkxxll/movie-trailers/issues"
+  },
+  "homepage": "https://github.com/kkxxll/movie-trailers#readme",
   "dependencies": {
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-runtime": "^6.26.0",
-    "koa": "^2.4.1",
-    "koa-logger": "^3.2.0",
-    "koa-session": "^5.8.1"
+    "koa": "^2.4.1"
   }
 }
