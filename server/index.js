@@ -8,7 +8,7 @@ app.use(views(resolve(__dirname, './views'), {
 }));
 
 app.use(async function(ctx, next) {
-  await ctx.render('index.pug', {
+  await ctx.render('index', {
     you: 'John',
     me: 'kk'
   });
