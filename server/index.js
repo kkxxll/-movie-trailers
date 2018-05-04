@@ -1,35 +1,37 @@
-const Koa = require('koa');
+const Koa = require('koa')
 const mongoose = require('mongoose')
-const views = require('koa-views');
-const { resolve } = require('path');
-const app = new Koa();
-const { connect, initSchemas } = require('./database/init');
-const router = require('./routes');
+const views = require('koa-views')
+const { resolve } = require('path')
+const { connect, initSchemas, initAdmin } = require('./database/init')
+const R = require('ramda')
+const MIDDLEWARES = ['router']
 
+const useMiddlewares = (app) => {
+  R.map(
+    R.compose(
+      R.forEachObjIndexed(
+        initWith => initWith(app)
+      ),
+      require,
+      name => resolve(__dirname, `./middlewares/${name}`)
+    )
+  )(MIDDLEWARES)
+}
 
-(async () => {
-  await connect();
-  initSchemas();
-  // const Movie = mongoose.model('Movie')
-  // const movies = await Movie.find({})
+;(async () => {
+  await connect()
+
+  initSchemas()
+
+  await initAdmin()
+
   // require('./tasks/movie')
-})();
+  // require('./tasks/api')
+  // require('./tasks/trailer')
+  // require('./tasks/qiniu')
 
-app
-.use(router.routes())
-.use(router.allowedMethods())
+  const app = new Koa()
+  await useMiddlewares(app)
 
-app.use(
-  views(resolve(__dirname, './views'), {
-    extension: 'pug'
-  })
-);
-
-app.use(async function(ctx, next) {
-  await ctx.render('index', {
-    you: 'John',
-    me: 'kk'
-  });
-});
-
-app.listen(2333);
+  app.listen(2333)
+})()
